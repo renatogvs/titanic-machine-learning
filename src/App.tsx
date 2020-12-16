@@ -1,20 +1,29 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {default as data} from './data/train.json'
+import { Person } from './entity/Person'
 
 import './App.css';
+import { TablePerson } from './TablePerson';
 
 export class App extends React.Component {
 
   render = () => {
 
-    const table = data.map(( data )  => {
-      return <p key={data.PassengerId}>{data.Name}</p>
+
+    const personsJson = data.map((personJson) => {
+      let person = new Person({name: personJson.Name, id: personJson.PassengerId})
+
+      return person
     });
+
+    
+
+    
+
 
     return (
       <div className="App">
-        {table}
+        <TablePerson persons={personsJson} />
       </div>
     );
 
