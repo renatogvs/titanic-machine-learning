@@ -1,33 +1,38 @@
 import React from 'react'
 
-import {TableCR} from './TableCR'
-import ITablePerson from './interfaces/itableperson'
-import { Person } from './entity/Person';
+import { TableCR } from './TableCR'
 
-export class TablePerson extends React.Component<ITablePerson> {
+export class TablePerson extends React.Component<ITablePersonProps, ITablePersonState> {
 
-  persons: Person[]
+  listElementsTable = (person: any[]) => {
+    const dataState = person.map((person) => {
+      return [person.id, person.name, person.sex,
+      person.age, person.pclass, person.sibSp, person.parch,
+      person.ticket, person.fare, person.cabin, person.embarked, '' + person.survived]
+    })
 
-  constructor(props: ITablePerson) {
-    super(props);
-    this.persons = props.persons
+    return dataState
   }
 
   render = () => {
 
-    let PersonData = this.persons.map((value, index) => {
-      return ['' + value.id, '' + value.name, '' + value.sex,
-      '' + value.age, '' + value.pclass, '' + value.sibSp, '' + value.parch,
-      '' + value.ticket, '' + value.fare, '' + value.cabin, '' + value.embarked, '' + value.survived]
-    })
-
     return (
-      <TableCR header={["Id", "Name", "Sex", "Age", "Ticket class", 
+      <div>
+        <TableCR header={["Id", "Name", "Sex", "Age", "Ticket class", 
       "Siblings/spouses aboard", "Parents/children aboard", "Ticket number",
       "Fare", "Cabin number", "Port of Embarkation", "Survival"]}
-       tableData={PersonData} />
+       tableData={this.listElementsTable(this.props.persons)} />
+      </div>
     );
 
   }
 
 };
+
+interface ITablePersonState {
+  data: any
+}
+
+interface ITablePersonProps {
+  persons: [];
+}
