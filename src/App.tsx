@@ -1,5 +1,4 @@
 import React from 'react'
-import update from 'react-addons-update'
 import {default as data} from './data/train.json'
 import {default as test} from './data/test.json'
 
@@ -152,37 +151,16 @@ export class App extends React.Component<AppProps, AppState> {
       });
   
       let result: tf.TypedArray = (model.predict(tf.tensor(toPredict)) as tf.Tensor).dataSync()
-
-      Array.from(result).map((resultValue:any, index:number) => {
+      
+      let resultTest = Array.from(result).map((resultValue:any, index:number) => {
         
-        let personTest:any = this.state.personsTest[index]
+        let personTest = this.state.personsTest[index]
+        personTest.survived = (Math.round(resultValue * 100)).toFixed(2) + '%';
 
-        let person = {
-          id: personTest.id,
-          name: personTest.name,
-          survived: (Math.round(resultValue * 100)).toFixed(2) + '%',
-          pclass: personTest.pclass,
-          sex: personTest.sex,
-          age: personTest.age,
-          sibSp: personTest.sibSp,
-          parch: personTest.parch,
-          ticket: personTest.ticket,
-          fare: personTest.fare,
-          cabin: personTest.cabin,
-          embarked: personTest.embarked
-        }
-
-        this.setState(update(this.state, {
-          personsTest: {
-            [index]: {
-              $set: person
-            }
-          }
-        }))
-
-        return person
+        return personTest
       })
 
+      this.setState({personsTest: resultTest})
 
      });
 
@@ -214,11 +192,26 @@ interface AppProps {
 };
 
 interface AppState {
-  persons: []
-  personsTest: []
+  persons: Person[]
+  personsTest: Person[]
   renderCount: number
   data: any
   test: any
   isTfReady: boolean
   consoleText: string
+}
+
+interface Person {
+  id: number
+  name: string
+  survived: string
+  pclass: number
+  sex: string
+  age: number
+  sibSp: number
+  parch: string
+  ticket: string
+  fare: number
+  cabin: string
+  embarked: string
 }

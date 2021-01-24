@@ -10,7 +10,7 @@ export class TableCR extends React.Component<ITableCRProps> {
                         <thead>
                             <tr>
                                 {this.props.header.map((value, index) => {
-                                    return (<th className="headerTableCR">{value}</th>)
+                                    return (<th key={index} className="headerTableCR">{value}</th>)
                                 })}
                             </tr>
                         </thead>
@@ -18,7 +18,7 @@ export class TableCR extends React.Component<ITableCRProps> {
                             {this.props.tableData.map((value, index) => {
                                 return (<tr key={index}>
                                     {value.map((valueElement, indexElement) => {
-                                        return (<td>{valueElement}</td>)
+                                        return (<td key={index * 100 + indexElement}>{valueElement}</td>)
                                     })}
                                 </tr>)
                             })}

@@ -34,5 +34,5 @@ interface ITablePersonState {
 }
 
 interface ITablePersonProps {
-  persons: [];
+  persons: any[];
 }
