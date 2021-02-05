@@ -20,7 +20,7 @@ export class TablePerson extends React.Component<ITablePersonProps, ITablePerson
       <div>
         <TableCR header={["Id", "Name", "Sex", "Age", "Ticket class", 
       "Siblings/spouses aboard", "Parents/children aboard", "Ticket number",
-      "Fare", "Cabin number", "Port of Embarkation", "Survival"]}
+      "Fare", "Cabin number", "Port of Embarkation", this.props.resultTitle]}
        tableData={this.listElementsTable(this.props.persons)} />
       </div>
     );
@@ -34,5 +34,6 @@ interface ITablePersonState {
 }
 
 interface ITablePersonProps {
-  persons: any[];
+  persons: any[]
+  resultTitle: string
 }
