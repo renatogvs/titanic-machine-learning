@@ -7,6 +7,7 @@ import * as tf from '@tensorflow/tfjs';
 
 import './App.css';
 import { TablePerson } from './TablePerson'
+import { WebConsole } from './WebConsole'
 
 export class App extends React.Component<AppProps, AppState> {
 
@@ -129,7 +130,7 @@ export class App extends React.Component<AppProps, AppState> {
         }
       }
     }).then(info => {
-
+      
       let toPredict = test.map((personJson: any) => {
         let person = [
           personJson.Pclass,
@@ -170,11 +171,11 @@ export class App extends React.Component<AppProps, AppState> {
         <h1>Training table</h1>
         <TablePerson persons={this.state.persons} resultTitle="Survival" />
 
+        <WebConsole outputText={this.state.consoleText} rowsSize={10} doAction={this.doPrediction} />
+
         <h1>Test table</h1>
         <TablePerson persons={this.state.personsTest} resultTitle="Survival prediction" />
 
-        <button onClick={this.doPrediction}>Train</button>
-        <textarea id="console" name="console" rows={4} cols={50} defaultValue={this.state.consoleText} />
       </div>
     );
 
