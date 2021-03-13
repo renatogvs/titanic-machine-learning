@@ -24,20 +24,22 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Titanic - Machine Learning example</title>
   </head>
   <body>
+    <h1>Machine Learning prediction model</h1>
+    <p>This is a simple implementation of Machine Learning model to predict if a passenger survived or not the Titanic's shipwreck.</p>
+    <p>This example is based on Kaggle's competition (<a href="https://www.kaggle.com/c/titanic" target="new">https://www.kaggle.com/c/titanic</a>) where
+       they give a list of passengers and important information about them, and the aim is to predict if the passenger survived or not. You have to implement an algorithm to predict the survivance from another data set (in this example I use the table Test Table).</p>
+    <p>In this example, I use Tensorflow.JS to implement a simple machine learning algorithm to solve the related question.</p>
+    <p>The image below shows the result expected from the submission realized using the data prediction calculated using this algorithm. It got 76% accuracy.</p>
+    <p><img class="imgCenter" src="img/kaggle-result.png" /></p>
+    <p>Click in the button "Train the model" to run the training and compute the "Survival prediction".</p>
+
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id="root">
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    </div>
   </body>
 </html>

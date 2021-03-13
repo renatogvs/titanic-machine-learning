@@ -78,6 +78,37 @@ padding: 12px 15px;
 
 .tableCR   {
   display: inline-block;
-  height: 300px;
+  height: 600px;
   overflow-y: scroll
+}
+
+p {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.9em;
+  min-width: 400px;
+  width: 75%;
+  text-align: justify;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.imgCenter {
+  display: block;
+  width: auto;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.webConsole {
+  width: 80%;
+  display: block;
+  margin: 5px auto;
+  background-color: black;
+  color: #00ff00;
+  font-size: 1.1em;
 }
